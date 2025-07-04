@@ -1,17 +1,24 @@
-package Notes;
+package com.notes.model;
 
 import jakarta.persistence.*;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.UUID;
 
 
 @Entity
 @Table(name= "Notes")
 public class Note {
     @Id
-    @GeneratedValue
-    public Long id;
+    @Column(columnDefinition = "uuid")
+    public UUID id;
+
+    @PrePersist
+    public void assignId() {
+        if (id == null) {
+            id = UUID.randomUUID();
+        }
+    }
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "logId", referencedColumnName = "logId")
@@ -24,5 +31,9 @@ public class Note {
     public Instant updated;
 
     public Note(){}
+
+    public Note(String message){
+        this.message = message;
+    }
 
 }

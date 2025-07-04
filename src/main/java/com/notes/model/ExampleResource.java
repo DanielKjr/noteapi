@@ -1,4 +1,4 @@
-package Notes;
+package com.notes.model;
 
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;

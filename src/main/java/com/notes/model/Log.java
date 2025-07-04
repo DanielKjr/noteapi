@@ -1,4 +1,4 @@
-package Notes;
+package com.notes.model;
 
 import jakarta.persistence.*;
 
