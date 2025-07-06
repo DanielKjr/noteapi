@@ -1,5 +1,6 @@
 package com.login.model;
 
+import io.quarkus.elytron.security.common.BcryptUtil;
 import io.quarkus.security.jpa.*;
 import jakarta.persistence.*;
 
@@ -17,11 +18,20 @@ public class CustomUser{
     public String username;
 
     @Column(name = "password")
-    @Password(value = PasswordType.CUSTOM, provider = CustomPasswordProvider.class)
+    @Password
+//    @Password(value = PasswordType.CUSTOM, provider = CustomPasswordProvider.class)
     public String password;
 
     @Roles
     public String role;
 
+    public static CustomUser addCustom(String username, String password, String role){
+        CustomUser user = new CustomUser();
+        user.username = username;
+        user.password = BcryptUtil.bcryptHash(password);
+        user.role = role;
+//        em.persist(user);
 
+        return user;
+    }
 }

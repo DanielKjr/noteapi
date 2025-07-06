@@ -19,7 +19,7 @@ public class LoginService {
     EntityManager em;
 
     public CustomUser createCustomUser(String username, String password){
-        return addCustom(username, password, "None");
+        return addCustom(username, password, "admin");
     }
 
     @Transactional

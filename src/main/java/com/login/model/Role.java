@@ -5,6 +5,7 @@ import io.quarkus.security.jpa.RolesValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 
+
 import java.util.List;
 
 @Entity
